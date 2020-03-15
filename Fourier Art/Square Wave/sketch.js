@@ -38,10 +38,6 @@ function draw()
 		//fill(255);
 		stroke(255);
 		line(prevx,prevy,x,y);
-		ellipse(x,y,5);
-
-		
-
 	}
 
 	wave.unshift(y);
