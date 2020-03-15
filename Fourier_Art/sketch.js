@@ -1,33 +1,61 @@
 let time = 0;
 let wave = []; 
+let slider;
 
 function setup()
 {
-    createCanvas(1000,800);
+	createCanvas(1000,800);
+	slider = createSlider(1,100,1);
 }
 
 function draw()
 {
     background(10,100,0);
-    translate(400,400);
+    translate(200,400);
 
-    let radius = 150;
     stroke(255);
-    noFill();
-	ellipse(0,0,radius*2);
+	noFill();
 	
-	let x = radius * cos(time);
-	let y = radius * sin(time);
-	wave.push(y);
+	let x = 0;
+	let y = 0;
 
-	for(let i = 0;i<wave.length;i++)
+	for(let i=0;i<slider.value();i++)
 	{
-		point(i+radius,wave[i]);
+		let prevx = x;
+		let prevy = y;
+
+		let n = 2*i+1;
+		let radius = 100 * ((4/n)/PI);
+	
+		x += radius * cos(n * time);
+		y += radius * sin(n * time);
+		
+
+		stroke(255,100);
+		noFill();
+		ellipse(prevx,prevy,radius*2);
+
+		//fill(255);
+		stroke(255);
+		line(prevx,prevy,x,y);
+		ellipse(x,y,5);
+
+		
+
 	}
 
-	fill(255);
-	line(0,0,x,y);
-	ellipse(x,y,10);
+	wave.unshift(y);
 
-    time += 0.1;
+	translate(200,0);
+	line(x-200,y,0,wave[0]);
+
+	beginShape();
+	noFill();
+	for(let i = 0;i<wave.length;i++)
+	{
+		vertex(i,wave[i]);
+	}
+	endShape();
+
+    time += 0.05;
 }
