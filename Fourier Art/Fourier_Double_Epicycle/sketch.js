@@ -7,25 +7,36 @@ let fourierTransformSignalY;
 
 function setup()
 {
-	createCanvas(1000,800);
+	createCanvas(windowWidth,windowHeight);
 
-	for(let i = 0; i<100; i++)
+	skip = 10;
+
+	for(let i = 0; i<artUU.length; i++)
 	{
-		angle = map(i,0,100,0,TWO_PI);
+		//angle = map(i,0,100,0,TWO_PI);
 		//signalX[i] = 100*cos(angle);
-		signalX[i] = 200*noise(angle);
+		//signalX[i] = art[i].x; //200*noise(angle);
+		//signalX[i] = 200*noise(angle);
+
+		signalX.push(artUU[i].x);
 	}
 		
-	for(let i = 0; i<100; i++)
+	for(let i = 0; i<artUU.length; i++)
 	{
-		angle = map(i,0,100,0,TWO_PI);
+		//angle = map(i,0,100,0,TWO_PI);
 		//signalY[i] = 100*sin(angle); //random(-250,100);
-		signalY[i] = 150*noise(angle+100);
-	}
+		//signalY[i] = art[i].y; //150*noise(angle+100);
+		//signalY[i] = 150*noise(angle+100);
+
+		signalY.push(artUU[i].y);
+	} 
 
 	//signal = [100,100,100,-100,-100,-100,100,100,100,-100,-100,-100];
 	fourierTransformSignalX = dft(signalX);
 	fourierTransformSignalY = dft(signalY);
+
+	fourierTransformSignalX.sort((a,b) => a.amp-b.amp);
+	//fourierTransformSignalY.sort((a,b) => b.amp-a.amp);
 }
 
 function epiCycles(x,y,fourierTransformSignal,rotation)
@@ -43,12 +54,12 @@ function epiCycles(x,y,fourierTransformSignal,rotation)
 		y += radius * sin(freq * time + phase + rotation);
 		
 		
-		stroke(255,100);
+		stroke('#b0aac0');
 		noFill();
 		ellipse(prevx,prevy,radius*2);
 
 		//fill(255);
-		stroke(255);
+		stroke('#87bdd8');
 		line(prevx,prevy,x,y); 
 	}
 
@@ -57,12 +68,12 @@ function epiCycles(x,y,fourierTransformSignal,rotation)
 
 function draw()
 {
-    background(10,100,0);
+    background(0,0,0);
 
 	translate(200,100);
 
-	let vx = epiCycles(400,50,fourierTransformSignalX,0);
-	let vy = epiCycles(50,300,fourierTransformSignalY,HALF_PI);
+	let vx = epiCycles(400,10,fourierTransformSignalX,0);
+	let vy = epiCycles(20,20,fourierTransformSignalY,HALF_PI);
 
 	let v = createVector(vx.x,vy.y);
 	wave.unshift(v);
@@ -72,6 +83,7 @@ function draw()
 
 	beginShape();
 	noFill();
+	stroke(255, 204, 0);
 	for(let i = 0;i<wave.length;i++)
 	{
 		vertex(wave[i].x,wave[i].y);
