@@ -23,4 +23,4 @@ Discrete Fourier Transform to draw any shape<br>
 * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
   * Install this extension in VSCOde to create a server 
   
-Note : You can use other editors like Atom or Sublime . VSCode is just me preffered choice <br>
+Note : You can use other editors like Atom or Sublime . VSCode is just my preffered choice <br>
