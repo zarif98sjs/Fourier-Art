@@ -43,4 +43,4 @@ Note : You can use other editors like Atom or Sublime . VSCode is just my preffe
 * [An Interactive Introduction to Fourier Series ](http://www.jezzamon.com/fourier/index.html) [Jez Swanson]
 * [Fourier Analysis for the rest of us ](https://youtu.be/2hfoX51f6sg) [Glod Plated Goof)
 * [FFT](https://www.algorithm-archive.org/contents/cooley_tukey/cooley_tukey.html) [Algorithm Archive]
-* [The Coding Train][https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw]
+* [The Coding Train](https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw)
