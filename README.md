@@ -3,6 +3,8 @@ Discrete Fourier Transform to draw any shape<br>
 
 # Output 
 
+[Video](https://youtu.be/VrShOyMJKM0)
+
 ![alt text][art]
 
 [art]: https://github.com/zarif98sjs/Fourier-Art/blob/master/screenshot/ultima.png "Art de Ultima"
